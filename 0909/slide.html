@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/0909/fontawesome/css/all.css">
+    <style>
+        .wrapper {
+            width: 800px;
+            height: 400px;
+            overflow: hidden;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .slide_container {
+            width: 3200px;
+            position: absolute;
+            left: -1600px;
+            transition: .6s
+        }
+
+        .slide_container li {
+            flex: 1 0 0;
+        }
+
+        .slide_container li img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+        }
+
+        .slide_dot li {
+            width: 20px;
+            margin: 0 10px;
+            height: 20px;
+            border: 1px solid #ffffff;
+            border-radius: 50%;
+
+        }
+
+        .slide_dot {
+            width: 100%;
+            position: absolute;
+            bottom: 10px;
+        }
+
+        .slide_left {
+            left: 0;
+        }
+
+        .slide_right {
+            right: 0;
+        }
+
+        .slide_left img {
+            opacity: .9;
+        }
+
+        .slide_left:hover img {
+            opacity: .6;
+        }
+
+        .slide_right img {
+            opacity: .9;
+        }
+
+        .slide_right:hover img {
+            opacity: .6;
+        }
+
+        .slide_btn {
+            top: 0;
+            bottom: 0;
+            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ace
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <ul id="slide_container" class="list-unstyled d-flex slide_container">
+            <li><img src="/images/slide1.jpeg" alt=""></li>
+            <li><img src="/images/slide2.jpeg" alt=""></li>
+            <li><img src="/images/slide3.jpeg" alt=""></li>
+            <li><img src="/images/slide4.jpeg" alt=""></li>
+        </ul>
+        <ul id="slide_dot" class="d-flex slide_dot list-unstyled m-0 justify-content-center">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div id="slide_left" class="slide_btn slide_left position-absolute">
+            <i><img src="/images/arrow-pointing-to-left.png" alt=""></i>
+        </div>
+        <div id="slide_right" class="slide_btn slide_right position-absolute">
+            <i><img src="/images/arrow-pointing-to-right.png" alt=""></i>
+        </div>
+    </div>
+    <i class="fas fa-baseball"></i>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script>
+        var slide_width = 800;
+        var slide_num = 0;
+        var slide_count = $('#slide_dot li').length
+        $('.slide_container').css('width',slide_count*slide_width )
+        $('#slide_dot li').eq(0).css('background','white')
+        $('#slide_dot li').hover(function () {
+            slide()
+        })
+
+        $('#slide_left').click(function () {
+            slide_num--
+            
+            slide()
+        })
+        $('#slide_right').click(function () {
+            slide_num++
+            
+            slide()
+        })
+        function slide(){
+            slide_num=slide_num%slide_count
+            if(slide_num<0)slide_num=slide_count-1
+            console.log(slide_num);
+            $('#slide_dot li').eq(slide_num).css('background', 'white').siblings().css('background', 'none')
+            $('#slide_container').css('left', 0 - (slide_num * slide_width))
+        }
+        setInterval(function(){
+            slide_num++
+            slide_num=slide_num%slide_count
+            $('#slide_dot li').eq(slide_num).css('background', 'white').siblings().css('background', 'none')
+            $('#slide_container').css('left', 0 - (slide_num * slide_width))
+        },2000)
+    </script>
+</body>
+
+</html>
