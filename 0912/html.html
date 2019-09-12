@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      <div class="container">
+          <h1 class="text-center" id="get_content">Hello! <span class="text-info">world</span> </h1>
+          <div class="py-2">
+              <button type="button" class="btn btn-primary" id="get_txt">text</button>
+              <button type="button" class="btn btn-primary" id="get_html">html</button>
+              <button type="button" class="btn btn-primary" id="get_html_code">html_code</button>
+          </div>
+          <h1 id="set_content"></h1>
+          <button type="button" class="btn btn-primary" id="set_url">url</button>
+          <div class="py-2">
+              <a id="attr" href="https://www.facebook.com/">fb</a>
+        </div>
+        <div class="py-2">
+            <input id="check" type="checkbox" >
+            <button type="button" class="btn btn-primary" id="check_btn">check</button>
+        </div>
+          
+      </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+  <script>
+      $('#get_txt').click(function(){
+        var content =  $('#get_content').text()
+        console.log(content)
+        $('#set_content').text(content)
+      })
+      $('#get_html').click(function(){
+        var content =  $('#get_content').html()
+        console.log(content)
+        $('#set_content').html(content)
+      })
+      $('#get_html_code').click(function(){
+        var content =  $('#get_content').html()
+        console.log(content)
+        $('#set_content').text(content)
+      })
+
+      $('#set_url').click(function(){
+        var attr = $('#attr').attr('href')
+        console.log(attr)
+        var new_url = 'https://www.tenlong.com.tw/events/oreillygift'
+        $('#attr').attr('href',new_url).attr('title','bookstore').text('bookstore')
+      })
+
+      $('#check').click(function(){
+          var checkbox = $(this).prop('checked')
+          console.log(checkbox)
+      })
+      $('#check_btn').click(function(){
+        var checkbox = $('#check').prop('checked')
+          $('#check').prop('checked',!checkbox)
+      })
+  </script>
+</html>
