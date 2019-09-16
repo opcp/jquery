@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+       
+    </style>
+</head>
+  <body>
+      <div class="container">
+          <div class="py-2 d-flex justify-content-end">
+                <div class="btn-group  " role="group" aria-label="Basic example" >
+                        <button type="button" class="btn btn-secondary active" data-size="l">大</button>
+                        <button type="button" class="btn btn-secondary" data-size="m">中</button>
+                        <button type="button" class="btn btn-secondary" data-size="s">小</button>
+                      </div>
+          </div>
+          <h1>jquery</h1>
+          <p>台灣民眾黨官方網站，昨晚9時正式上線，開放線上入黨，今凌晨就傳出遭駭客入侵，目前暫時關閉網頁進行維護。對此，身兼黨主席的台北市長柯文哲今早受訪直言「當然會報警」，開張第一天就被駭客幹掉，不能期待每個人都善意，還是要有能力抵抗。</p>
+          <p>民眾黨發言人陳思宇稍後受訪表示，昨晚間官網正式上線後，今天凌晨發現有人惡意不斷輸入別人的手機，因此先暫時關閉網站，目前已掌握一個IP，仍在討論後續，不排除提告或是報警，稍後若有進一步消息都會儘快公告。</p>
+        </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+  <script>
+      $('.btn').click(function(){
+          var fz = $(this).data("size")
+          $(this).addClass('active').siblings().removeClass('active')
+          if(fz == 's'){
+              $('html').css('font-size','15px')
+          }
+          else if(fz == 'm'){
+              $('html').css('font-size','25px')
+          }
+          else {
+              $('html').css('font-size','35px')
+          }
+      })
+  </script>
+</html>

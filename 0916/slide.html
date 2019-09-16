@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/0909/fontawesome/css/all.css">
     <style>
         .wrapper {
-            width: 800px;
+            max-width: 800px;
             height: 400px;
             overflow: hidden;
             margin: 0 auto;
@@ -92,16 +92,16 @@
 <body>
     <div class="wrapper">
         <ul id="slide_container" class="list-unstyled d-flex slide_container">
-            <li><img src="/jquery/images/slide1.jpeg" alt=""></li>
+            <!-- <li><img src="/jquery/images/slide1.jpeg" alt=""></li>
             <li><img src="/jquery/images/slide2.jpeg" alt=""></li>
             <li><img src="/jquery/images/slide3.jpeg" alt=""></li>
-            <li><img src="/jquery/images/slide4.jpeg" alt=""></li>
+            <li><img src="/jquery/images/slide4.jpeg" alt=""></li> -->
         </ul>
         <ul id="slide_dot" class="d-flex slide_dot list-unstyled m-0 justify-content-center">
+            <!-- <li></li>
             <li></li>
             <li></li>
-            <li></li>
-            <li></li>
+            <li></li> -->
         </ul>
         <div id="slide_left" class="slide_btn slide_left position-absolute">
             <i><img src="/jquery/images/arrow-pointing-to-left.png" alt=""></i>
@@ -125,37 +125,52 @@
 
     <script>
         var slide_width = 800;
+        var slide_pic = ['slide1.jpeg', 'slide2.jpeg', 'slide3.jpeg', 'slide4.jpeg'];
+        console.log(slide_pic)
         var slide_num = 0;
-        var slide_count = $('#slide_dot li').length
-        $('.slide_container').css('width',slide_count*slide_width )
-        $('#slide_dot li').eq(0).css('background','white')
+        // var slide_count = $('#slide_dot li').length
+        slide_count=slide_pic.length
+        $('.slide_container').css('width', slide_count * slide_width)
+        $('#slide_dot li').eq(0).css('background', 'white')
         $('#slide_dot li').hover(function () {
             slide()
         })
 
+        slide_pic.forEach(function (pic) {
+            var slide_content = `<li><img src="/jquery/images/${pic}"></li>`
+            $('#slide_container').append(slide_content)
+            $('#slide_dot').append('<li></li>')
+        })
+
+
         $('#slide_left').click(function () {
             slide_num--
-            
+
             slide()
         })
         $('#slide_right').click(function () {
             slide_num++
-            
+
             slide()
         })
-        function slide(){
-            slide_num=slide_num%slide_count
-            if(slide_num<0)slide_num=slide_count-1
+        function slide() {
+            slide_num = slide_num % slide_count
+            if (slide_num < 0) slide_num = slide_count - 1
             console.log(slide_num);
             $('#slide_dot li').eq(slide_num).css('background', 'white').siblings().css('background', 'none')
             $('#slide_container').css('left', 0 - (slide_num * slide_width))
         }
-        setInterval(function(){
+        setInterval(function () {
             slide_num++
-            slide_num=slide_num%slide_count
+            slide_num = slide_num % slide_count
             $('#slide_dot li').eq(slide_num).css('background', 'white').siblings().css('background', 'none')
             $('#slide_container').css('left', 0 - (slide_num * slide_width))
-        },2000)
+        }, 2000)
+        var wid = $(window).resize(function(){
+            slide_width=$('.wrapper').width();
+            $('.slide_container').css('width', slide_count * slide_width);
+            slide()
+        })
     </script>
 </body>
 
